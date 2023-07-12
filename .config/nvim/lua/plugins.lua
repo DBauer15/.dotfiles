@@ -96,6 +96,9 @@ return require('packer').startup(function(use)
     -- EasyMotion
     use 'easymotion/vim-easymotion'
 
+    -- Git signs
+    use 'lewis6991/gitsigns.nvim'
+
     -- Unimpaired
     -- use { 'tummetott/unimpaired.nvim',
     --        config = function()
