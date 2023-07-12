@@ -38,7 +38,9 @@ return require('packer').startup(function(use)
     ---------------------------------------
     -- NOTE: PUT YOUR THIRD PLUGIN HERE --
     ---------------------------------------
-    use 'tanvirtin/monokai.nvim'
+    -- Color Schemes
+    use 'folke/tokyonight.nvim'
+
     
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
@@ -82,12 +84,18 @@ return require('packer').startup(function(use)
             requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         }
 
-    -- Floating terminal
+    -- Floating terminalasdf
     use 'voldikss/vim-floaterm'
     
     -- Surround
     use 'tpope/vim-surround'
     
+    -- Sneak Search
+    use 'justinmk/vim-sneak'
+
+    -- EasyMotion
+    use 'easymotion/vim-easymotion'
+
     -- Unimpaired
     -- use { 'tummetott/unimpaired.nvim',
     --        config = function()
