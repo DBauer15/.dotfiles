@@ -99,6 +99,9 @@ return require('packer').startup(function(use)
     -- Git signs
     use 'lewis6991/gitsigns.nvim'
 
+    -- Args text objects
+    use 'vim-scripts/argtextobj.vim'
+
     -- Unimpaired
     -- use { 'tummetott/unimpaired.nvim',
     --        config = function()
