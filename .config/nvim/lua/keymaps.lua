@@ -16,6 +16,10 @@ vim.keymap.set('i', 'jk', '<Esc>', opts)
 -- Normal mode --
 -----------------
 
+-- Faster movement
+vim.keymap.set('n', '<S-j>', '5j', opts)
+vim.keymap.set('n', '<S-k>', '5k', opts)
+
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
@@ -27,8 +31,8 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 -- delta: 2 lines
 vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<C-Left>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<C-Right>', ':vertical resize -2<CR>', opts)
 
 -- Floaterm
 vim.keymap.set('n', '<leader>tt', ':FloatermToggle<cr>', opts)
