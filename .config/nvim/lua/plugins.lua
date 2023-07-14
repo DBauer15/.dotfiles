@@ -102,6 +102,12 @@ return require('packer').startup(function(use)
     -- Args text objects
     use 'vim-scripts/argtextobj.vim'
 
+    -- Git plugin
+    use 'tpope/vim-fugitive'
+
+    -- Code comments
+    use 'scrooloose/nerdcommenter'
+
     -- Unimpaired
     -- use { 'tummetott/unimpaired.nvim',
     --        config = function()
