@@ -16,9 +16,9 @@ vim.keymap.set('i', 'jk', '<Esc>', opts)
 -- Normal mode --
 -----------------
 
--- Faster movement
-vim.keymap.set('n', '<S-j>', '5j', opts)
-vim.keymap.set('n', '<S-k>', '5k', opts)
+-- Insert new lines in normal mode 
+vim.keymap.set('n', '<S-k>', '<S-o><Esc>', opts)
+vim.keymap.set('n', '<S-j>', 'o<Esc>', opts)
 
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
@@ -36,6 +36,7 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize -2<CR>', opts)
 
 -- Floaterm
 vim.keymap.set('n', '<leader>tt', ':FloatermToggle<cr>', opts)
+vim.keymap.set('t', 'qtt', '<C-\\><C-n>:FloatermToggle<cr>', opts)
 
 -- CMake
 vim.keymap.set('n', '<leader>cc', ':Task start cmake configure<cr>', opts)
