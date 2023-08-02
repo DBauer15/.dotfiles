@@ -9,11 +9,4 @@ vim.opt.termguicolors = true
 require("nvim-tree").setup({
 --  open_on_setup = true,
 --  ignore_buffer_on_setup = true,
-    filesystem = {
-        filtered_items = {
-            visible = true,
-            hide_dotfiles = false,
-            hide_gitignored = false
-        }
-    }
 })
