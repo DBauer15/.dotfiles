@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
     ---------------------------------------
     -- Color Schemes
     use 'folke/tokyonight.nvim'
-
+    use 'arcticicestudio/nord-vim'
     
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
