@@ -160,7 +160,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # locks the screen and turns it off after n seconds
-bindsym $mod+Control+l exec --no-startup-id i3lock && sleep 5 && xset dpms force off
+set $i3lockwall sh ~/.config/i3/scripts/lock.sh
+bindsym $mod+Control+l exec --no-startup-id $i3lockwall
+#&& sleep 5 && xset dpms force off
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
