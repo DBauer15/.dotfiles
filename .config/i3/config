@@ -9,21 +9,38 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Configure monitor setup (note: this is different for every system)
+exec --no-startup-id ~/.config/i3/scripts/resolution.sh
+
+# Set modifier key
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:Ubuntu Regular 9
 
-# Window borders
-#for_window [class="^.*"] border pixel 2
-for_window [class="^.*"] client.focused #77dd77 #285577 #ffffff #2e9ef4 #285577
+# Window gaps
+gaps inner 5
 
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill /home/davidbau/Pictures/Wallpapers/wallhaven-jx1gxy.jpg
 
+# Color theme
+set $bgcolor    #523d64
+set $in-bgcolor #363636
+set $text       #ffffff
+set $u-bgcolor  #ff0000
+set $indicator  #a8a3c1
+set $in-text    #969696
+#                       border          background      text            indicator (a line which shows where the next window will be placed)     
+client.focused          $bgcolor        $bgcolor        $text           $indicator
+client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor 
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -93,10 +110,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+bindsym $mod+c split h
 
 # split in vertical orientation
-#bindsym $mod+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -143,6 +160,9 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -159,12 +179,16 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # locks the screen and turns it off after n seconds
 set $i3lockwall sh ~/.config/i3/scripts/lock.sh
 bindsym $mod+Control+l exec --no-startup-id $i3lockwall
-#&& sleep 5 && xset dpms force off
+
+# autolock after some time
+exec xautolock -time 1 -locker $i3lockwall
+
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Logout?' -B 'Logout' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -197,4 +221,13 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status --config ~/.config/i3/i3status.conf
+        colors {
+                background $bgcolor
+                separator #191919
+                #                       border          background      text
+                focused_workspace       $bgcolor        $bgcolor        $text
+                inactive_workspace      $in-bgcolor     $in-bgcolor     $text
+                urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
+
+        }
 }
