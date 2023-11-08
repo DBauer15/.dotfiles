@@ -210,7 +210,6 @@ mode "resize" {
 
 # locks the screen and turns it off after n seconds
 set $i3lockwall sh ~/.config/i3/scripts/lock.sh
-bindsym $mod+Control+l exec --no-startup-id "$i3lockwall"
 
 # autolock after some time
 exec --no-startup-id xautolock -time 15 -locker "xset dpms force off" -notify 60 -notifier "$i3lockwall" 
