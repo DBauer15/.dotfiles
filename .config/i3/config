@@ -182,10 +182,10 @@ bindsym $mod+Shift+r restart
 
 # locks the screen and turns it off after n seconds
 set $i3lockwall sh ~/.config/i3/scripts/lock.sh
-bindsym $mod+Control+l exec --no-startup-id $i3lockwall
+bindsym $mod+Control+l exec --no-startup-id "$i3lockwall"
 
 # autolock after some time
-exec xautolock -time 1 -locker $i3lockwall
+exec --no-startup-id xautolock -time 2 -locker "xset dpms force off" -notify 60 -notifier "$i3lockwall" 
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Logout?' -B 'Logout' 'i3-msg exit'"
