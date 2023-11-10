@@ -163,6 +163,8 @@ bindsym $mod+0 workspace number $ws10
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
+bindsym $mod+x [urgent=latest] focus
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -245,6 +247,6 @@ bar {
                 focused_workspace       $bgcolor        $bgcolor        $text
                 inactive_workspace      $in-bgcolor     $in-bgcolor     $text
                 urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
-
+                binding_mode            $in-bgcolor     $in-bgcolor     $text
         }
 }
