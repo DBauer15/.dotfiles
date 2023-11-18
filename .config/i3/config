@@ -30,17 +30,27 @@ gaps inner 5
 exec_always --no-startup-id feh --bg-fill /home/davidbau/Pictures/Wallpapers/wallhaven-jx1gxy.jpg
 
 # Color theme
-set $bgcolor    #523d64
-set $in-bgcolor #363636
-set $text       #ffffff
-set $u-bgcolor  #ff0000
-set $indicator  #a8a3c1
-set $in-text    #969696
+set $bgcolor    #3b4252
+set $text       #e5e9f0
+set $indicator  #81a1c1
+set $in-bgcolor #2e3440
+set $in-text    #d8dee9
+set $red        #bf616a
+set $orange     #d08770
+set $yellow     #ebcb8b
+set $green      #a3be8c
+set $purple     #b48ead
+set $highlight1 #8fbcbb
+set $highlight2 #88c0d0
+set $highlight3 #81a1c1
+set $highlight4 #5e81ac
+
+
 #                       border          background      text            indicator (a line which shows where the next window will be placed)     
 client.focused          $bgcolor        $bgcolor        $text           $indicator
 client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
 client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor 
+client.urgent           $red            $red            $text           $red 
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -59,8 +69,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -74,11 +84,14 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# open a folder
+bindsym $mod+n exec nautilus
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -nb "$in-bgcolor" -nf "$text" -sb "$highlight3" -sf "$bgcolor"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -160,10 +173,20 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+# tab between workspaces on a screen
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
+# open urgent workspace
 bindsym $mod+x [urgent=latest] focus
+
+# enable back-and-forth switching
+workspace_auto_back_and_forth yes
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -240,13 +263,16 @@ mode $mode_shutdown {
 bar {
         status_command i3status --config ~/.config/i3/i3status.conf
         #font pango:Ubuntu Regular 12
+        padding 1px 3px
         colors {
                 background $bgcolor
-                separator #191919
+                separator $in-bgcolor
+                statusline $in-text
                 #                       border          background      text
                 focused_workspace       $bgcolor        $bgcolor        $text
+                active_workspace        $in-bgcolor     $in-bgcolor     $text
                 inactive_workspace      $in-bgcolor     $in-bgcolor     $text
-                urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
+                urgent_workspace        $red            $red            $text   
                 binding_mode            $in-bgcolor     $in-bgcolor     $text
         }
 }
