@@ -269,9 +269,9 @@ bar {
                 separator $in-bgcolor
                 statusline $in-text
                 #                       border          background      text
-                focused_workspace       $bgcolor        $bgcolor        $text
+                focused_workspace       $highlight3     $highlight3     $text
                 active_workspace        $in-bgcolor     $in-bgcolor     $text
-                inactive_workspace      $in-bgcolor     $in-bgcolor     $text
+                inactive_workspace      $bgcolor        $bgcolor        $text
                 urgent_workspace        $red            $red            $text   
                 binding_mode            $in-bgcolor     $in-bgcolor     $text
         }
