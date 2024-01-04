@@ -102,3 +102,4 @@ source $ZSH/oh-my-zsh.sh
 
 ## ALIASES
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias lt="ll -rt"
