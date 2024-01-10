@@ -7,5 +7,11 @@ Clone the repository to a new machine as a bare repository
 git clone --bare https://github.com/DBauer15/.dotfiles.git $HOME/.dotfiles
 [ ! -f .zshrc ] || mv .zshrc .zshrc.before-dotfiles
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
 bash $HOME/.config/setup.sh
 ```
+### Neovim
+To finish neovim setup, run `nvim` and update the Packer packages by typing `:PackerSync`.
+
+### Tmux
+Load the updates tmux config by entering `tmux` and running `<ctrl>-<space> I` and `<ctrl>-<space> R`. 
