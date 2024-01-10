@@ -27,7 +27,7 @@ font pango:Ubuntu Regular 9
 gaps inner 5
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-fill /home/davidbau/Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallpaper.jpg
 
 # Color theme
 set $bgcolor    #3b4252
