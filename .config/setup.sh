@@ -2,8 +2,6 @@
 
 # general
 cd $HOME
-[ ! -f .zshrc ] || mv .zshrc .zshrc.before-dotfiles
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
 
 # oh-my-zsh 
