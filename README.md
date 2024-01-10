@@ -5,11 +5,9 @@ Contains configs for various applications on unix-like systems. Assumes zsh as p
 Clone the repository to a new machine as a bare repository
 ```bash
 git clone --bare https://github.com/DBauer15/.dotfiles.git $HOME/.dotfiles
-[ ! -f .zshrc ] || mv .zshrc .zshrc.before-dotfiles
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
 bash $HOME/.config/setup.sh
 ```
+
 ### Neovim
 To finish neovim setup, run `nvim` and update the Packer packages by typing `:PackerSync`.
 
