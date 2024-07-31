@@ -36,7 +36,10 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize -2<CR>', opts)
 
 -- Floaterm
 vim.keymap.set('n', '<leader>tt', ':FloatermToggle<cr>', opts)
+vim.keymap.set('n', '<leader>tn', ':FloatermNew<cr>', opts)
 vim.keymap.set('t', 'tt<leader>', '<C-\\><C-n>:FloatermToggle<cr>', opts)
+vim.keymap.set('t', '<leader>n', '<C-\\><C-n>:FloatermNext<cr>', opts)
+vim.keymap.set('t', '<leader>p', '<C-\\><C-n>:FloatermPrev<cr>', opts)
 
 -- CMake
 vim.keymap.set('n', '<leader>cc', ':Task start cmake configure<cr>', opts)
