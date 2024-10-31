@@ -10,10 +10,10 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Configure monitor setup (note: this is different for every system)
-exec --no-startup-id ~/.config/i3/scripts/resolution.sh
+exec_always --no-startup-id ~/.config/i3/scripts/resolution.sh
 
 # Set modifier key
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -27,7 +27,7 @@ font pango:Ubuntu Regular 9
 gaps inner 5
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-fill /home/davidbau/Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallpaper.jpg
 
 # Color theme
 set $bgcolor    #3b4252
@@ -54,6 +54,7 @@ client.urgent           $red            $red            $text           $red
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id blueman-applet
 exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -70,15 +71,21 @@ exec --no-startup-id nm-applet
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+bindsym $mod+Prior exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+bindsym $mod+Next exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym $mod+Pause exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use playerctl to enable media keys.
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym $mod+Home exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym $mod+End exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym $mod+Delete exec --no-startup-id playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -97,9 +104,9 @@ bindsym $mod+n exec nautilus
 bindsym $mod+Shift+q kill
 
 # take a screenshot
-bindsym Ctrl+Shift+s exec --no-startup-id maim_out="/home/$USER/Pictures/Screenshot-$(date +'%Y-%m-%d %H:%M:%S').png" && maim --format=png "$maim_out" && xclip -selection clipboard -t image/png "$maim_out"
+bindsym Ctrl+Shift+s exec --no-startup-id maim_out="/home/$USER/Pictures/Screenshot-$(date +'%Y-%m-%d %H:%M:%S').png" && maim --hidecursor --format=png "$maim_out" && xclip -selection clipboard -t image/png "$maim_out"
 
-bindsym $mod+Ctrl+Shift+s exec --no-startup-id maim_out="/home/$USER/Pictures/Screenshot-$(date +'%Y-%m-%d %H:%M:%S').png" && maim --format=png --select "$maim_out" && xclip -selection clipboard -t image/png "$maim_out"
+bindsym $mod+Ctrl+Shift+s exec --no-startup-id maim_out="/home/$USER/Pictures/Screenshot-$(date +'%Y-%m-%d %H:%M:%S').png" && maim --hidecursor --format=png --select "$maim_out" && xclip -selection clipboard -t image/png "$maim_out"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -nb "$in-bgcolor" -nf "$text" -sb "$highlight3" -sf "$bgcolor"
