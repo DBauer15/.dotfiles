@@ -42,6 +42,7 @@ vim.keymap.set('t', 'tt<leader>', '<C-\\><C-n>:FloatermToggle<cr>', opts)
 vim.keymap.set('n', '<leader>cc', ':Task start cmake configure<cr>', opts)
 vim.keymap.set('n', '<leader>cb', ':Task start cmake build<cr>', opts)
 vim.keymap.set('n', '<leader>cr', ':Task start cmake run<cr>', opts)
+
 -----------------
 -- Visual mode --
 -----------------

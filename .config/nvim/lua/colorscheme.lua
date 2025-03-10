@@ -1,8 +1,10 @@
 -- define your colorscheme here
-local colorscheme = 'nord'
+vim.defer_fn(function()
+    local colorscheme = 'aura-dark'
+    local is_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
-local is_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not is_ok then
-    vim.notify('colorscheme ' .. colorscheme .. ' not found!')
-    return
-end
+    if not is_ok then
+        vim.notify('colorscheme ' .. colorscheme .. ' not found!')
+        return
+    end
+end, 0)

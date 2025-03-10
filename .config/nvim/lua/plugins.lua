@@ -38,9 +38,6 @@ return require('packer').startup(function(use)
     ---------------------------------------
     -- NOTE: PUT YOUR THIRD PLUGIN HERE --
     ---------------------------------------
-    -- Color Schemes
-    use 'folke/tokyonight.nvim'
-    use 'arcticicestudio/nord-vim'
     
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
@@ -114,6 +111,29 @@ return require('packer').startup(function(use)
     --            require('unimpaired').setup {}
     --        end
     --    }
+
+    -- Color Schemes
+    use 'folke/tokyonight.nvim'
+    use 'arcticicestudio/nord-vim'
+    use {
+      'daltonmenezes/aura-theme',
+      rtp = 'packages/neovim',
+      config = function()
+        --vim.cmd('colorscheme aura-dark-soft-text') -- Or any Aura theme available
+        --require('colorscheme')
+      end
+    }
+
+    -- Avante
+    use 'stevearc/dressing.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'MunifTanjim/nui.nvim'
+    use 'MeanderingProgrammer/render-markdown.nvim'
+    use {
+        'yetone/avante.nvim',
+        tag = 'v0.0.22',
+        run = 'make'
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
