@@ -103,7 +103,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
 
     -- Code comments
-    use 'scrooloose/nerdcommenter'
+    use 'tpope/vim-commentary'
 
     -- Unimpaired
     -- use { 'tummetott/unimpaired.nvim',
