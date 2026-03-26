@@ -1,28 +1,34 @@
+-- Clipboard & mouse
+vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "a"
 
--- Hint: use `:h <option>` to figure out the meaning if needed
-vim.opt.clipboard = 'unnamedplus'   -- use system clipboard 
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.mouse = 'a'                 -- allow the mouse to be used in Nvim
+-- Completion
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
--- Tab
-vim.opt.tabstop = 4                 -- number of visual spaces per TAB
-vim.opt.softtabstop = 4             -- number of spacesin tab when editing
-vim.opt.shiftwidth = 4              -- insert 4 spaces on a tab
-vim.opt.expandtab = true            -- tabs are spaces, mainly because of python
+-- Tabs & indentation
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
--- UI config
-vim.opt.number = true               -- show absolute number
-vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
-vim.opt.splitbelow = true           -- open new vertical split bottom
-vim.opt.splitright = true           -- open new horizontal splits right
-vim.opt.termguicolors = true        -- enabl 24-bit RGB color in the TUI
-vim.opt.showmode = false            -- we are experienced, wo don't need the "-- INSERT --" mode hint
+-- UI
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
+vim.opt.showmode = false
+vim.opt.signcolumn = "yes"      -- always show, prevents layout shifts
+vim.opt.scrolloff = 8           -- keep cursor away from edges
 
 -- Searching
-vim.opt.incsearch = true            -- search as characters are entered
-vim.opt.hlsearch = false            -- do not highlight matches
-vim.opt.ignorecase = true           -- ignore case in searches by default
-vim.opt.smartcase = true            -- but make it case sensitive if an uppercase is entered
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
--- Line Numbers
-vim.wo.relativenumber = true        -- enable relative line numbers
+-- Misc
+vim.opt.updatetime = 250        -- faster CursorHold events (used by gitsigns etc.)
+vim.opt.timeoutlen = 300        -- faster which-key / keymap resolution
+vim.opt.undofile = true         -- persistent undo across sessions
