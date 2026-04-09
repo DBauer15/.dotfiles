@@ -112,3 +112,6 @@ alias v="nvim"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias lt="ll -rt"
 alias difft="$HOME/work/difftastic/build/difft"
+
+alias fd="fdfind"
+alias bat="batcat"
