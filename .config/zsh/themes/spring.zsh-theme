@@ -14,13 +14,12 @@ parse_git_branch() {
   git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
-git_prompt_info() {
+git_branch() {
   local branch=$(parse_git_branch)
   if [[ -n $branch ]]; then
-    echo " ${SPRING_PINK}(${branch})${RESET}"
+    echo "${SPRING_PINK}($branch)${RESET}"
   fi
 }
 
 # Prompt (spring version of robbyrussell)
-# PROMPT='${SPRING_YELLOW}➜${RESET}${SPRING_GREEN}%n@%m${RESET} ${SPRING_BLUE}%~${RESET}$(git_prompt_info) '
-PROMPT='${SPRING_YELLOW}➜${RESET} ${SPRING_BLUE}%~${RESET}$(git_prompt_info) '
+PROMPT='${SPRING_YELLOW}➜${RESET} ${SPRING_BLUE}%1~${RESET} '
